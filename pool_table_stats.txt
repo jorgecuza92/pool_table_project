@@ -1,0 +1,7 @@
+
+
+***POOL TABLE CHECK-IN STATS***
+Pool Table Number: 1
+Start Date Time: 2021-02-11 21:55:27.429470
+End Date Time: 2021-02-11 21:55:31.682068
+The total time used: <bound method PoolTable.total_time of <__main__.PoolTable object at 0x7f8a39e94d30>>
