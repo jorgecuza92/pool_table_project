@@ -22,7 +22,7 @@ class PoolTable:
         self.is_occupied = False
 
     def total_time(self):
-        self.total_time = datetime.now() - self.start_time
+        return self.end_time - self.start_time
 
 # Create 12 pool tables based on the class
 for index in range(1, 13):
@@ -72,14 +72,18 @@ while True:
         table = pool_tables[table_checkin_index - 1]
         table.check_in()
         # Appending pool table stats to .txt
+        play_time = table.total_time()
+        formatted_play_time = str(play_time)
         with open("pool_table_stats.txt", "a") as file:
             file.write('\n\n***POOL TABLE CHECK-IN STATS***')
             file.write(f"\nPool Table Number: {table.table_number}"
                        f"\nStart Date Time: {format_time(table.start_time)}"
                        f"\nEnd Date Time: {format_time(table.end_time)}"
-                       f"\nThe total time used: {table.total_time}")
+                       f"\nThe total time used: {formatted_play_time}")
             file.write("\n")
     elif choice == 'q':
         break
+    else:
+        print("Invalid input. Try again.")
 
 
