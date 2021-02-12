@@ -2,7 +2,6 @@
 
 from datetime import datetime
 
-
 pool_tables = []
 fmt = '%H:%M:%S'
 
@@ -14,8 +13,6 @@ class PoolTable:
         self.start_time = None
         self.end_time = None
 
-
-
     def check_out(self):
         self.start_time = datetime.now()
         self.is_occupied = True
@@ -24,19 +21,13 @@ class PoolTable:
         self.end_time = datetime.now()
         self.is_occupied = False
 
-
     def total_time(self):
         self.total_time = datetime.now() - self.start_time
-
-
 
 # Create 12 pool tables based on the class
 for index in range(1, 13):
     pool_table = PoolTable(index)
     pool_tables.append(pool_table)
-
-
-
 
 # Start menu
 def display_menu():
@@ -61,7 +52,6 @@ def format_time(dt):
     else:
         return dt.strftime(fmt)
 
-
 # Functionality
 while True:
     display_menu()
@@ -80,16 +70,10 @@ while True:
         table_checkin_index = int(input('Which table would you like to check-in?: '))
         table = pool_tables[table_checkin_index - 1]
         table.check_in()
-
         with open("pool_table_stats.txt", "a") as file:
             file.write('\n\n***POOL TABLE CHECK-IN STATS***')
-            file.write(f"\nPool Table Number: {table.table_number}\nStart Date Time: {table.start_time}\nEnd Date Time: {table.end_time}\nThe total time used: {table.total_time}")
+            file.write(f"\nPool Table Number: {table.table_number}\nStart Date Time: {format_time(table.start_time)}\nEnd Date Time: {format_time(table.end_time)}\nThe total time used: {table.total_time}")
             file.write("\n")
-        # print('\n\n***POOL TABLE CHECK-IN STATS***')
-        # print(f"Pool Table Number: {table.table_number}"
-        #       f"\nStart Date Time: {table.start_time}"
-        #       f"\nEnd Date Time: {table.end_time}"
-        #       f"\nthe total time used on the pool table was: {table.total_time}")
     elif choice == 'q':
         break
 
